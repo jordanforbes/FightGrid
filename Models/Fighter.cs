@@ -16,13 +16,15 @@ namespace fightgrid.Models
 
         public List<sbyte> Position{get;set;} 
 
-        public Fighter(int Role)
+        public Fighter(int role)
         {
-            if( Role == 0 ){
+            if( role == 0 ){
+                Role= role;
                 Icon = "O";
                 Position = new List<sbyte>(){0,0};
 
-            }else{
+            }else if( role==1 ){
+                Role= role;
                 Icon = "X";
                 Position = new List<sbyte>(){2,2};
 
