@@ -50,19 +50,34 @@ namespace fightgrid
             switch (key){
                 case (ConsoleKey.UpArrow):
                     Console.WriteLine("\u2191");
-                    Oguy.Position[0]-=1;//move down
+                    if(Oguy.Position[0] != 0){
+                        Oguy.Position[0]-=1;//move Up
+                    }else{
+                        Console.WriteLine("there's a wall there");
+                    }
                     break;
                 case (ConsoleKey.DownArrow):
                     Console.WriteLine("\u2193");
-                    Oguy.Position[0]+=1;//move down
+                    if(Oguy.Position[0] !=2){
+                        Oguy.Position[0]+=1;//move Down
+                    }else{
+                        Console.WriteLine("there's a wall there");
+                    }
+                    break;
+                case (ConsoleKey.LeftArrow):
+                    if(Oguy.Position[1] != 0){
+                        Oguy.Position[1]-=1;//move Left
+                    }else{
+                        Console.WriteLine("there's a wall there");
+                    }
                     break;
                 case (ConsoleKey.RightArrow):
                     Console.WriteLine("\u2192");
-                    Oguy.Position[1]+=1;//move down
-                    break;
-                case (ConsoleKey.LeftArrow):
-                    Console.WriteLine("\u2190");
-                    Oguy.Position[1]-=1;//move down
+                    if(Oguy.Position[1] !=2){
+                        Oguy.Position[1]+=1;//move Right
+                    }else{
+                        Console.WriteLine("there's a wall there");
+                    }
                     break;
             };
 
