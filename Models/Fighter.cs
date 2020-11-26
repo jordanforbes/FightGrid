@@ -26,7 +26,7 @@ namespace fightgrid.Models
             }else if( role==1 ){
                 Role= role;
                 Icon = "X";
-                Position = new List<sbyte>(){2,2};
+                Position = new List<sbyte>(){1,1};
 
                 // Position[0]=2;
                 // Position[1]=2;
