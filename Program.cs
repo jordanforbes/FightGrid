@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Net.Mime;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -17,20 +18,25 @@ namespace fightgrid {
             Start ();
         }
 
+        // public static int CurrentPhase = 0;
+
         static void Start () {
             Fighter Oguy = new Fighter (0);
             Fighter Xguy = new Fighter (1);
-
             Arena.DrawArena (Oguy, Xguy);
 
-            while (Oguy.Focus >= 0 && Xguy.Focus >= 0) {
+            while (Oguy.Focus >=0 && Xguy.Focus >=0) {
+                Turn.Phaser(Oguy, Xguy);
                 ConsoleKey input = Console.ReadKey (true).Key;
+                
                 Controls.Movement (Oguy, Xguy, input);
                 Arena.DrawArena(Oguy,Xguy);
+                Console.WriteLine($"Current Phase:{Turn.CurrentPhase}");
             }
 
         }
 
+         //Starting, Player, Enemy
     
 
     }
