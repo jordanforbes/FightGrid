@@ -5,10 +5,17 @@ namespace fightgrid
 {
     public class Controls
     {
-         public static void Movement (Fighter Oguy, Fighter Xguy, ConsoleKey key) {
+        private static Fighter Oguy = Instance.O;
+        private static Fighter Xguy = Instance.X;
+         public static void Movement (ConsoleKey key) {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             //MOVEMENT
             switch (key) {
+                //change phase 
+                case (ConsoleKey.Spacebar):
+                    Arena.Debug("space");
+                    Turn.PhaseShift();
+                    break;
                 //punch mode
                 case (ConsoleKey.F):
                    
@@ -39,18 +46,17 @@ namespace fightgrid
                 //Arrow keys
                 //UP
                 case (ConsoleKey.UpArrow):
+                    Arena.Debug("uparrow");
                     Arena.Line2 ("\u2191");
                     //punch mode
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (0, 1, Oguy, Xguy, Xguy);
                         Oguy.Mode= 'M';
-                        Turn.PhaseShift();
-                    //kick mode
+                        Turn.PhaseShift();                    //kick mode
                     }else if(Oguy.Mode == 'K'){
                         Oguy.Kick (0,1,Oguy,Xguy,Xguy);
                         Oguy.Mode='M';
-                        Turn.PhaseShift();
-                    //Movement
+                        Turn.PhaseShift();                    //Movement
                     }else{
                         if (Oguy.Position[0] != 0) {
                              //collision detection with enemy
@@ -59,8 +65,7 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[0] -= 1; //move Up
                                 Arena.Empty();
-                                Turn.PhaseShift();
-                            }
+                                Turn.PhaseShift();                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -73,13 +78,11 @@ namespace fightgrid
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (0, 1, Xguy, Oguy, Xguy);
                         Oguy.Mode= 'M';
-                        Turn.PhaseShift();
-                    //kick mode
+                        Turn.PhaseShift();                    //kick mode
                     }else if(Oguy.Mode == 'K'){
                         Oguy.Kick (0, 1, Xguy, Oguy, Xguy);
                         Oguy.Mode='M';
-                        Turn.PhaseShift();
-                    }else{
+                        Turn.PhaseShift();                    }else{
                     //Movement
                         if (Oguy.Position[0] != Arena.arenaHeight-1) {
                              //collision detection with enemy
@@ -88,8 +91,7 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[0] += 1; //move Down
                                 Arena.Empty();
-                                Turn.PhaseShift();
-                            }
+                                Turn.PhaseShift();                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -102,13 +104,11 @@ namespace fightgrid
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (1, 0, Oguy, Xguy, Xguy);
                         Oguy.Mode= 'M';
-                        Turn.PhaseShift();
-                    //kick mode
+                        Turn.PhaseShift();                    //kick mode
                     }else if(Oguy.Mode == 'K'){
                         Oguy.Kick (1, 0, Oguy, Xguy, Xguy);
                         Oguy.Mode='M';
-                        Turn.PhaseShift();
-                    //Movement
+                        Turn.PhaseShift();                    //Movement
                     }else{
                         if (Oguy.Position[1] != 0) {
                             //collision detection with enemy
@@ -117,8 +117,7 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[1] -= 1; //move Left
                                 Arena.Empty();
-                                Turn.PhaseShift();
-                            }
+                                Turn.PhaseShift();                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -132,13 +131,11 @@ namespace fightgrid
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (1, 0, Xguy, Oguy, Xguy);
                         Oguy.Mode= 'M';
-                        Turn.PhaseShift();
-                    //kick mode
+                        Turn.PhaseShift();                    //kick mode
                     }else if(Oguy.Mode == 'K'){
                         Oguy.Kick (1, 0, Xguy, Oguy, Xguy);
                         Oguy.Mode='M';
-                        Turn.PhaseShift();
-                    //Movement
+                        Turn.PhaseShift();                    //Movement
                     }else{
                         if (Oguy.Position[1] != Arena.arenaWidth-1) {
                             if(Oguy.Position[0]==Xguy.Position[0] && Oguy.Position[1]+1 == Xguy.Position[1]){
@@ -146,8 +143,7 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[1] += 1; //move Right
                                 Arena.Empty();
-                                Turn.PhaseShift();
-                            }    
+                                Turn.PhaseShift();                            }    
                         } else {
                             Arena.WallWarn();
                         }
@@ -155,8 +151,8 @@ namespace fightgrid
                     break;
                     
             };
-
-        
+        Arena.DrawArena();
+        // Enemy.Move();
             
     }
 }

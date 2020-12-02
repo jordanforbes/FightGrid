@@ -7,11 +7,18 @@ namespace fightgrid
 
         public static int arenaWidth = 3;
         public static int arenaHeight = 3;
+        private static Fighter Oguy = Instance.O;
+        private static Fighter Xguy = Instance.X;
 
         //Messages
         public static string Description ="";
         public static string Description2="";
         public static string Direction="";
+
+        //debug
+        public static string DebugMsg ="";
+
+        public static int currPhase=0;
 
         //Collision
         public static void Occupied(){
@@ -25,6 +32,19 @@ namespace fightgrid
         }
         public static void Line2(string desc){
             Description2 = desc;
+        }
+        public static int GetPhase(){
+            currPhase=Turn.CurrentPhase;
+            return currPhase;
+        }
+        public static void Debug(string msg){
+            DebugMsg=msg;
+        }
+         public static void DebugL(string msg){
+            DebugMsg+=" "+msg;
+        }
+        public static void clearDebug(){
+            DebugMsg="";
         }
       
         public static void Arrow(char dir){
@@ -49,7 +69,7 @@ namespace fightgrid
             }
 
         }
-        public static void DrawArena (Fighter Oguy, Fighter Xguy) {
+        public static void DrawArena () {
 
             //draw 2D arr
             Console.Clear();
@@ -66,10 +86,11 @@ namespace fightgrid
             Console.WriteLine ($"| {arenaInt[1,0]} {arenaInt[1,1]} {arenaInt[1,2]} | X:{Xguy.Focus}");
             Console.WriteLine ($"| {arenaInt[2,0]} {arenaInt[2,1]} {arenaInt[2,2]} | Mode: {Oguy.Mode}");
             Console.WriteLine("__________");
-            Console.WriteLine($"Current Phase:{Turn.CurrentPhase}");
+            Console.WriteLine($"Current Phase:{GetPhase()}");
             Console.WriteLine($"{Description}");
             Console.Write($"{Direction}");
             Console.WriteLine($"{Description2}");
+            Console.WriteLine($"Debug: {DebugMsg}");
         }
     }
      
