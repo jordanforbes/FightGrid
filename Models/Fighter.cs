@@ -23,7 +23,7 @@ namespace fightgrid.Models
                 Role= role;
                 Icon = "O";
                 Position = new List<sbyte>(){0,0}; //y and x not x and y
-
+                
             }else if( role==1 ){
                 Role= role;
                 Icon = "X";

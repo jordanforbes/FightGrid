@@ -31,7 +31,6 @@ namespace fightgrid {
                 
                 Controls.Movement (Oguy, Xguy, input);
                 Arena.DrawArena(Oguy,Xguy);
-                Console.WriteLine($"Current Phase:{Turn.CurrentPhase}");
             }
 
         }

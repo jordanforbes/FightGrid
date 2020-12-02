@@ -26,14 +26,14 @@ namespace fightgrid
         {
             if(CurrentPhase == 0) //starting phase
             {
-                Console.WriteLine("Start Turn");
+                // Console.WriteLine("Start Turn");
                 player.Focus +=1;
                 enemy.Focus +=1;
                 PhaseShift(player, enemy);
             }else if(CurrentPhase == 1){
-                Console.WriteLine("Player's Turn");
+                // Console.WriteLine("Player's Turn");
             }else if(CurrentPhase ==2){
-                Console.WriteLine("Enemy's Turn");
+                // Console.WriteLine("Enemy's Turn");
                 PhaseShift(player, enemy);
             }
         }

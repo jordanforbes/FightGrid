@@ -11,11 +11,12 @@ namespace fightgrid
             switch (key) {
                 //punch mode
                 case (ConsoleKey.F):
+                   
                     if(Oguy.Focus >=2){
                         Oguy.Mode = 'P';
-                        Console.WriteLine("Punch Ready");   
+                        Arena.Line2("Punch Ready");   
                     }else{
-                        Console.WriteLine("Can't Punch Yet");
+                        Arena.Line2("Can't Punch Yet");
                         Oguy.Mode = 'M';
                     }
                     
@@ -24,21 +25,21 @@ namespace fightgrid
                 case (ConsoleKey.D):
                     if(Oguy.Focus >=2){
                         Oguy.Mode = 'K';
-                        Console.WriteLine("Kick Ready");
+                        Arena.Line2("Kick Ready");
                     }else{
-                        Console.WriteLine("Can't Kick Yet");
+                        Arena.Line2("Can't Kick Yet");
                         Oguy.Mode = 'M';
                     }
                     break;
                 //movement mode
                 case (ConsoleKey.S):
                     Oguy.Mode = 'M';
-                    Console.WriteLine("Movement");
+                    Arena.Line2("Movement");
                     break;
                 //Arrow keys
                 //UP
                 case (ConsoleKey.UpArrow):
-                    Console.WriteLine ("\u2191");
+                    Arena.Line2 ("\u2191");
                     //punch mode
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (0, 1, Oguy, Xguy, Xguy);
@@ -54,19 +55,20 @@ namespace fightgrid
                         if (Oguy.Position[0] != 0) {
                              //collision detection with enemy
                             if(Oguy.Position[0]-1==Xguy.Position[0] && Oguy.Position[1] == Xguy.Position[1]){
-                                Console.WriteLine("Occupied");
+                                Arena.Occupied();
                             }else{
                                 Oguy.Position[0] -= 1; //move Up
+                                Arena.Empty();
                                 Turn.PhaseShift();
                             }
                         } else {
-                            Console.WriteLine ("there's a wall there");
+                            Arena.WallWarn();
                         }
                     }
                     break;
                     //DOWN
                 case (ConsoleKey.DownArrow):
-                    Console.WriteLine ("\u2193");
+                    Arena.Line2 ("\u2193");
                     //Punch mode
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (0, 1, Xguy, Oguy, Xguy);
@@ -82,19 +84,20 @@ namespace fightgrid
                         if (Oguy.Position[0] != Arena.arenaHeight-1) {
                              //collision detection with enemy
                             if(Oguy.Position[0]+1 ==Xguy.Position[0] && Oguy.Position[1]== Xguy.Position[1]){
-                                Console.WriteLine("Occupied");
+                                Arena.Occupied();
                             }else{
                                 Oguy.Position[0] += 1; //move Down
+                                Arena.Empty();
                                 Turn.PhaseShift();
                             }
                         } else {
-                            Console.WriteLine ("there's a wall there");
+                            Arena.WallWarn();
                         }
                     }
                     break;
                     //LEFT
                 case (ConsoleKey.LeftArrow):
-                    Console.WriteLine ("\u2190");
+                    Arena.Line2 ("\u2190");
                      //Punch mode
                     if(Oguy.Mode == 'P'){
                         Oguy.Punch (1, 0, Oguy, Xguy, Xguy);
@@ -110,19 +113,20 @@ namespace fightgrid
                         if (Oguy.Position[1] != 0) {
                             //collision detection with enemy
                             if(Oguy.Position[0]==Xguy.Position[0] && Oguy.Position[1]-1 == Xguy.Position[1]){
-                                Console.WriteLine("Occupied");
+                                Arena.Occupied();
                             }else{
                                 Oguy.Position[1] -= 1; //move Left
+                                Arena.Empty();
                                 Turn.PhaseShift();
                             }
                         } else {
-                            Console.WriteLine ("there's a wall there");
+                            Arena.WallWarn();
                         }
                     }
                     break;
                 //RIGHT
                 case (ConsoleKey.RightArrow):
-                    Console.WriteLine ("\u2192");
+                    Arena.Line2 ("\u2192");
               
                     //Punch mode
                     if(Oguy.Mode == 'P'){
@@ -138,13 +142,14 @@ namespace fightgrid
                     }else{
                         if (Oguy.Position[1] != Arena.arenaWidth-1) {
                             if(Oguy.Position[0]==Xguy.Position[0] && Oguy.Position[1]+1 == Xguy.Position[1]){
-                                Console.WriteLine("Occupied");
+                                Arena.Occupied();
                             }else{
                                 Oguy.Position[1] += 1; //move Right
+                                Arena.Empty();
                                 Turn.PhaseShift();
                             }    
                         } else {
-                            Console.WriteLine ("there's a wall there");
+                            Arena.WallWarn();
                         }
                     }
                     break;
