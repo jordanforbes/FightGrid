@@ -65,7 +65,8 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[0] -= 1; //move Up
                                 Arena.Empty();
-                                Turn.PhaseShift();                            }
+                                Turn.PhaseShift();                            
+                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -91,7 +92,8 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[0] += 1; //move Down
                                 Arena.Empty();
-                                Turn.PhaseShift();                            }
+                                Turn.PhaseShift();                            
+                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -117,7 +119,8 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[1] -= 1; //move Left
                                 Arena.Empty();
-                                Turn.PhaseShift();                            }
+                                Turn.PhaseShift();                            
+                            }
                         } else {
                             Arena.WallWarn();
                         }
@@ -143,7 +146,8 @@ namespace fightgrid
                             }else{
                                 Oguy.Position[1] += 1; //move Right
                                 Arena.Empty();
-                                Turn.PhaseShift();                            }    
+                                Turn.PhaseShift();                           
+                                 }    
                         } else {
                             Arena.WallWarn();
                         }
@@ -151,7 +155,6 @@ namespace fightgrid
                     break;
                     
             };
-        Arena.DrawArena();
         // Enemy.Move();
             
     }

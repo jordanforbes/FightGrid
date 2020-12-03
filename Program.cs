@@ -20,37 +20,31 @@ namespace fightgrid {
         }
 
         // public static int CurrentPhase = 0;
+        
+         public static void Pause()
+        {
+            
+            ConsoleKey key = Console.ReadKey(true).Key;
+            while (key != ConsoleKey.Spacebar)
+            {
+                key = Console.ReadKey(true).Key;
+            }
+        }
 
         static void Start () {
             // Instance.instantiateChars();
             // Turn.Phaser(Oguy, Instance.X);
 
             while (Instance.O.Focus >=0 && Instance.X.Focus >=0) {
-                    ConsoleKey input = Console.ReadKey (true).Key;
                     Arena.DrawArena();
+                    ConsoleKey input = Console.ReadKey (true).Key;
                     Controls.Movement (input);
+                    Arena.Debug("Press Spacebar");
+                    // Pause();
+                    Arena.clearDebug();
+                    // Arena.DrawArena();
                     Enemy.Move();
-                    // Controls.Movement(Instance.O, Instance.X, input);
-                // while(Turn.CurrentPhase==1){
-
-                // }
-                // //start
-                // if(Turn.CurrentPhase==0){
-                //     Arena.Debug("Start Turn");
-                //     Arena.DebugL($"OX:{Instance.O.Position[1]}");
-                //     Arena.DebugL($"OY{Instance.O.Position[0]}");
-                //     Turn.IncreFocus(Instance.O,Instance.X);
-                //     Arena.DrawArena();
-                // //player
-                // }else if(Turn.CurrentPhase==1){
-                //     Arena.Debug("Player's Turn");
-                //     Arena.DrawArena();
-                // }
-                // //enemy
-                // else if(Turn.CurrentPhase==2){
-                //     Arena.Debug("Enemy Turn");
-                //     Arena.DrawArena();
-                // }
+           
                 
             }
 

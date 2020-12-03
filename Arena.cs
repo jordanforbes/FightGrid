@@ -85,7 +85,8 @@ namespace fightgrid
             Console.WriteLine ($"| {arenaInt[0,0]} {arenaInt[0,1]} {arenaInt[0,2]} | O:{Oguy.Focus}");
             Console.WriteLine ($"| {arenaInt[1,0]} {arenaInt[1,1]} {arenaInt[1,2]} | X:{Xguy.Focus}");
             Console.WriteLine ($"| {arenaInt[2,0]} {arenaInt[2,1]} {arenaInt[2,2]} | Mode: {Oguy.Mode}");
-            Console.WriteLine("__________");
+            Console.WriteLine($"Player X:{Instance.O.Position[1]}, Y:{Instance.O.Position[0]}");
+            Console.WriteLine($"Enemy X:{Instance.X.Position[1]}, Y:{Instance.X.Position[0]}");
             Console.WriteLine($"Current Phase:{GetPhase()}");
             Console.WriteLine($"{Description}");
             Console.Write($"{Direction}");
