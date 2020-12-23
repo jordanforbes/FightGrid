@@ -4,16 +4,18 @@ using fightgrid.Models;
 namespace fightgrid
 {
     public class Turn {
+        private static Fighter Oguy = Instance.O;
+        private static Fighter Xguy = Instance.X;
         public static int CurrentPhase = 1;
         //0 = start turn 
         //1 = player phase
         //2 = enemy phase
-        public static void IncreFocus(Fighter o, Fighter x){
-            if(o.Focus <10){
-                    o.Focus +=1;
+        public static void IncreFocus(){
+            if(Oguy.Focus <10){
+                    Oguy.Focus +=1;
                 }
-            if(x.Focus <10){
-                    x.Focus +=1;
+            if(Xguy.Focus <10){
+                    Xguy.Focus +=1;
                 }
         }
 

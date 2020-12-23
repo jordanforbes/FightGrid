@@ -7,6 +7,7 @@ namespace fightgrid {
 
         private static Fighter Oguy = Instance.O;
         private static Fighter Xguy = Instance.X;
+        private static char AtkDir;
 
         public static bool isOccupied (int x, int y) {
             if (x == Oguy.Position[1] && y == Oguy.Position[0]) {
@@ -15,10 +16,40 @@ namespace fightgrid {
                 return false;
             }
         }
+        public static void Atk () {
+            //kicklogic
+            if (Oguy.Position[0] == Xguy.Position[0]) {
+                if (Oguy.Position[1] > Xguy.Position[1]) {
+                    Xguy.Mode = 'K';
+                    AtkDir = 'd';
+                } else {
+                    Xguy.Mode = 'K';
+                    AtkDir = 'u';
+                }
+            } else if (Oguy.Position[1] == Xguy.Position[1]) {
+                if (Oguy.Position[0] > Xguy.Position[0]) {
+                    Xguy.Mode = 'K';
+                    AtkDir = 'l';
+                } else {
+                    Xguy.Mode = 'K';
+                    AtkDir = 'r';
+                }
+            }
+            // if(Oguy.Position[0]==Xguy.Position[0] || Oguy.Position[1]==Xguy.Position[1]){
+            //     if(Xguy.Mode=='M'){
+            //         Xguy.Mode='K'
+            //     }else if(Xguy.Mode=='K'){
+            //         Attack.Hit(Oguy,2);
+            //         Xguy.Focus -=1;
+            //     }
+            // }else{
+            //     Move();
+            // }
+        }
         //enemy AI
         public static void Move () {
             Random rng = new Random ();
-            int action = rng.Next (0, 4);
+            int action = rng.Next (0, 6);
             Arena.Line2 ($"Enemy X:{Xguy.Position[1]} Enemy Y: {Xguy.Position[0]}");
 
             switch (action) {
@@ -29,7 +60,6 @@ namespace fightgrid {
                     } else {
                         Arena.Debug ($"{isOccupied (Xguy.Position[1], Xguy.Position[0] - 1)}");
                         if (isOccupied (Xguy.Position[1], Xguy.Position[0] - 1) == true) {
-                            Xguy.Focus += 1;
                             Move ();
                         } else {
                             Xguy.Position[0] -= 1;
@@ -43,7 +73,6 @@ namespace fightgrid {
                     } else {
                         Arena.Debug ($"{isOccupied (Xguy.Position[1], Xguy.Position[0] + 1)}");
                         if (isOccupied (Xguy.Position[1], Xguy.Position[0] + 1) == true) {
-                            Xguy.Focus += 1;
                             Move ();
                         } else {
                             Xguy.Position[0] += 1;
@@ -57,7 +86,6 @@ namespace fightgrid {
                     } else {
                         Arena.Debug ($"{isOccupied (Xguy.Position[1] - 1, Xguy.Position[0])}");
                         if (isOccupied (Xguy.Position[1] - 1, Xguy.Position[0]) == true) {
-                            Xguy.Focus += 1;
                             Move ();
                         } else {
 
@@ -72,11 +100,17 @@ namespace fightgrid {
                     } else {
                         Arena.Debug ($"{isOccupied (Xguy.Position[1] + 1, Xguy.Position[0])}");
                         if (isOccupied (Xguy.Position[1] + 1, Xguy.Position[0]) == true) {
-                            Xguy.Focus += 1;
                             Move ();
                         } else {
                             Xguy.Position[1] += 1;
                         }
+                    }
+                    break;
+                case (4):
+                    if (Xguy.Focus < 2) {
+                        Move ();
+                    } else {
+                        Atk ();
                     }
                     break;
             }

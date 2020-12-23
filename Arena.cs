@@ -14,6 +14,7 @@ namespace fightgrid
         public static string Description ="";
         public static string Description2="";
         public static string Direction="";
+       
 
         //debug
         public static string DebugMsg ="";
@@ -23,6 +24,9 @@ namespace fightgrid
         //Collision
         public static void Occupied(){
             Description ="Occupied";
+        }
+        public static void Desc(string desc){
+            Description = desc;
         }
         public static void WallWarn(){
             Description="There's a wall there";
@@ -75,24 +79,61 @@ namespace fightgrid
             Console.Clear();
             Console.SetCursorPosition(0,0);
             string[, ] arenaGrid = new string[, ] { { "*", "*", "*" }, { "*", "*", "*" }, { "*", "*", "*" } };
-            int[, ] arenaInt = new int[, ] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } }; //0 is O, 1 is X, 2 is empty
+            double[, ] arenaDouble = new double[, ] { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } }; //0 is O, 1 is X, 2 is empty
             
 
-            arenaInt[Oguy.Position[0], Oguy.Position[1]] = Oguy.Role;
-            arenaInt[Xguy.Position[0], Xguy.Position[1]] = Xguy.Role;
+            arenaDouble[Oguy.Position[0], Oguy.Position[1]] = Oguy.Role;
+            arenaDouble[Xguy.Position[0], Xguy.Position[1]] = Xguy.Role;
 
+            Console.WriteLine(processArena(arenaDouble));
             Console.WriteLine("__________");
-            Console.WriteLine ($"| {arenaInt[0,0]} {arenaInt[0,1]} {arenaInt[0,2]} | O:{Oguy.Focus}");
-            Console.WriteLine ($"| {arenaInt[1,0]} {arenaInt[1,1]} {arenaInt[1,2]} | X:{Xguy.Focus}");
-            Console.WriteLine ($"| {arenaInt[2,0]} {arenaInt[2,1]} {arenaInt[2,2]} | Mode: {Oguy.Mode}");
+            // Console.WriteLine($"{processRow(arenaDouble[0])}");
+            Console.WriteLine ($"| {processTile(arenaDouble[0,0])} {arenaDouble[0,1]} {arenaDouble[0,2]} | O:{Oguy.Focus}");
+            Console.WriteLine ($"| {arenaDouble[1,0]} {arenaDouble[1,1]} {arenaDouble[1,2]} | X:{Xguy.Focus}");
+            Console.WriteLine ($"| {arenaDouble[2,0]} {arenaDouble[2,1]} {arenaDouble[2,2]} | Mode: {Oguy.Mode}");
             Console.WriteLine($"Player X:{Instance.O.Position[1]}, Y:{Instance.O.Position[0]}");
             Console.WriteLine($"Enemy X:{Instance.X.Position[1]}, Y:{Instance.X.Position[0]}");
             Console.WriteLine($"Current Phase:{GetPhase()}");
-            Console.WriteLine($"{Description}");
+            // Console.WriteLine($"{Description}");
             Console.Write($"{Direction}");
             Console.WriteLine($"{Description2}");
             Console.WriteLine($"Debug: {DebugMsg}");
         }
+
+        public static String processTile(double tile){
+            if(tile == 0){
+                return "O";
+            }else if(tile == 1){
+                return "X";
+            }else{
+                return "#";
+            }
+        }
+
+        public static String processRow(double[] row){
+            // foreach()
+            String finRow="";
+            foreach (int tile in row)
+            {
+             finRow+= processTile(tile);
+
+            }
+            return finRow;
+        }
+        public static String processArena(double[,] arena){
+            // foreach(int[] row in arena){
+
+            // }
+            var row = arena.Slice (0);
+            foreach(e in row){
+                Console.WriteLine(row);
+            }
+            // for(int i = 0; i<3; i++){
+            //     processRow(arena[i,]);
+            // }
+            return "called";
+        }
+    
     }
      
 }

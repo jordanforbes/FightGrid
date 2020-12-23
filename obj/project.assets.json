@@ -12066,7 +12066,6 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "Microsoft.AspNetCore.App >= 2.2.0",
-      "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
@@ -12077,11 +12076,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\fightgrid.csproj",
+      "projectUniqueName": "c:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\fightgrid.csproj",
       "projectName": "fightgrid",
-      "projectPath": "C:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\fightgrid.csproj",
+      "projectPath": "c:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\fightgrid.csproj",
       "packagesPath": "C:\\Users\\Jordf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\obj\\",
+      "outputPath": "c:\\Users\\Jordf\\onedrive\\documents\\coding\\codingdojo\\fightgrid\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12114,11 +12113,6 @@
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.Razor.Design": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[2.2.0, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",

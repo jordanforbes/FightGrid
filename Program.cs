@@ -6,10 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using fightgrid.Models;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+
 
 
 namespace fightgrid {
@@ -36,9 +33,10 @@ namespace fightgrid {
             // Turn.Phaser(Oguy, Instance.X);
 
             while (Instance.O.Focus >=0 && Instance.X.Focus >=0) {
+                    Turn.IncreFocus();
                     Arena.DrawArena();
-                    ConsoleKey input = Console.ReadKey (true).Key;
-                    Controls.Movement (input);
+                    // ConsoleKey input = Console.ReadKey (true).Key;
+                    Controls.Movement();
                     Arena.Debug("Press Spacebar");
                     // Pause();
                     Arena.clearDebug();
